@@ -50,11 +50,13 @@ export class AppComponent {
       this.easy = "red";
     }
     if(this.letters && this.numbers || this.letters && this.symvols || this.symvols && this.numbers){
+      if(this.inputValue.length > 7){
       this.easy = "yellow";
       this.medium = "yellow";
       this.hard = "grey";
+      }
     }
-    if(this.letters && this.numbers && this.symvols){
+    if(this.letters && this.numbers && this.symvols && this.inputValue.length > 7){
       this.easy = "green";
       this.medium = "green";
       this.hard = "green";
