@@ -23,43 +23,49 @@ export class AppComponent {
       this.medium = "red";
       this.hard = "red";
     }
+    else if(this.inputValue.length!= 0){
+      if(this.letterRegex.test(this.inputValue)){
+        this.letters = true;
+      }
+      else{
+        this.letters = false;
+      }
+      if(this.digitRegex.test(this.inputValue)){
+        this.numbers = true;
+      }
+      else{
+        this.numbers = false;
+      }
+      if(this.symbolRegex.test(this.inputValue)){
+        this.symvols = true;
+      }
+      else{
+        this.symvols = false;
+      }
+      if(this.letters || this.numbers || this.symvols){
+        this.easy = "red";
+        this.medium = "grey"
+        this.hard = "grey"
+        if(this.letters && this.numbers || this.letters && this.symvols || this.symvols && this.numbers){
+       
+          this.easy = "yellow";
+          this.medium = "yellow";
+          this.hard = "grey";
+          if(this.letters && this.numbers && this.symvols ){
+            this.easy = "green";
+            this.medium = "green";
+            this.hard = "green";
+          }
+        }
+      }
+  
+      
+    }
     else{
       this.easy = 'grey';
       this.medium = "grey";
       this.hard = "grey";
     }
-    if(this.letterRegex.test(this.inputValue)){
-      this.letters = true;
-    }
-    else{
-      this.letters = false;
-    }
-    if(this.digitRegex.test(this.inputValue)){
-      this.numbers = true;
-    }
-    else{
-      this.numbers = false;
-    }
-    if(this.symbolRegex.test(this.inputValue)){
-      this.symvols = true;
-    }
-    else{
-      this.symvols = false;
-    }
-    if(this.letters || this.numbers || this.symvols){
-      this.easy = "red";
-    }
-    if(this.letters && this.numbers || this.letters && this.symvols || this.symvols && this.numbers){
-      if(this.inputValue.length > 7){
-      this.easy = "yellow";
-      this.medium = "yellow";
-      this.hard = "grey";
-      }
-    }
-    if(this.letters && this.numbers && this.symvols && this.inputValue.length > 7){
-      this.easy = "green";
-      this.medium = "green";
-      this.hard = "green";
-    }
+
   }
 }
